@@ -1,0 +1,63 @@
+$black: #000000;
+$red: #FF0000;
+$blue: #0000FF;
+$bdr_black: $black;
+$field_border: 1px solid $bdr_black;
+$cell_border: 1px solid $bdr_black;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    padding: 20px;
+}
+
+.ttt_game {
+    .ttt_field {
+        display: flex;
+        flex-flow: row wrap;
+        border: $field_border;
+        .ttt_field_cell {
+            position: relative;
+            border: $cell_border;
+            box-sizing: border-box;
+            &.ttt_cell_e {
+                cursor: pointer;
+            }
+            &.ttt_cell_x {
+                &::before, &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    background-color: $blue;
+                }
+                &::before {
+                    transform: rotate(45deg);
+                }
+                &::after {
+                    transform: rotate(-45deg);
+                }
+            }
+            &.ttt_cell_o {
+                &::before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    border-style: solid;
+                    border-color: $red;
+                }
+            }
+        }
+    }
+}
