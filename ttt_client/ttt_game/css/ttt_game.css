@@ -1,0 +1,11 @@
+* { margin: 0; padding: 0; }
+
+body { padding: 20px; }
+
+.ttt_game .ttt_field { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-flow: row wrap; flex-flow: row wrap; border: 1px solid #000000; }
+.ttt_game .ttt_field .ttt_field_cell { position: relative; border: 1px solid #000000; -webkit-box-sizing: border-box; box-sizing: border-box; }
+.ttt_game .ttt_field .ttt_field_cell.ttt_cell_e { cursor: pointer; }
+.ttt_game .ttt_field .ttt_field_cell.ttt_cell_x::before, .ttt_game .ttt_field .ttt_field_cell.ttt_cell_x::after { content: ''; display: block; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; background-color: #0000FF; }
+.ttt_game .ttt_field .ttt_field_cell.ttt_cell_x::before { -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+.ttt_game .ttt_field .ttt_field_cell.ttt_cell_x::after { -webkit-transform: rotate(-45deg); transform: rotate(-45deg); }
+.ttt_game .ttt_field .ttt_field_cell.ttt_cell_o::before { content: ''; display: block; position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; border-style: solid; border-color: #FF0000; }
