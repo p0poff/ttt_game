@@ -31,21 +31,25 @@ func ShowMap(ar *[9]int, v *int, win *int, b map[string]string) (string) {
             s = "00" + s
         }
     }
+
+    if *win == 0 {
+      s = "0" + s // game continue
+    } else {
+      s = "1" + s // game over
+    }
+
+    if *win == -1 || *win == 1 {
+      s = "1" + s //win
+    } else {
+      s = "0" + s //drawn
+    }
+    //===============================
     if *v == -1 {
         s = "0" + s
     } else {
         s = "1" + s
     }
 
-    if *win == -1 {
-        s = "10" + s
-    } else if *win == 1 {
-        s = "11" + s 
-    } else if *win == 2 {
-        s = "01" + s
-    } else {
-        s = "00" + s
-    }
     // return s[0:4]
     fmt.Println(s)
     return bin2hex(s,b)
@@ -74,7 +78,7 @@ func CheckWin(ar *[9]int) (int, bool, int64) {
         if sum[i] == 3 {
             return 1, true, t // win X
         }
-    } 
+    }
     fZero := false
     for i := 0; i < 9; i++{
         if ar[i] == 0 {
