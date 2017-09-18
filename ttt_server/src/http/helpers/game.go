@@ -31,7 +31,13 @@ func ShowMap(ar *[9]int, v *int, win *int, b map[string]string) (string) {
             s = "00" + s
         }
     }
-
+//===============================
+    if *v == -1 {
+        s = "0" + s
+    } else {
+        s = "1" + s
+    }
+    
     if *win == 0 {
       s = "0" + s // game continue
     } else {
@@ -43,12 +49,7 @@ func ShowMap(ar *[9]int, v *int, win *int, b map[string]string) (string) {
     } else {
       s = "0" + s //drawn
     }
-    //===============================
-    if *v == -1 {
-        s = "0" + s
-    } else {
-        s = "1" + s
-    }
+    
 
     // return s[0:4]
     fmt.Println(s)
