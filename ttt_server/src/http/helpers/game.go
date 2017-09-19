@@ -32,10 +32,18 @@ func ShowMap(ar *[9]int, v *int, win *int, b map[string]string) (string) {
         }
     }
 //===============================
-    if *v == -1 {
-        s = "0" + s
+    if *win == 0 {
+        if *v == -1 {
+            s = "0" + s
+        } else {
+            s = "1" + s
+        }
     } else {
-        s = "1" + s
+        if *v == -1 {
+            s = "1" + s
+        } else {
+            s = "0" + s
+        }
     }
     
     if *win == 0 {
