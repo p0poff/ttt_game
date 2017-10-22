@@ -16,6 +16,7 @@ var winGame int
 var fGameOver bool
 var timestamp int64
 var deltaTime int64
+var curUserId string
 
 var BinTemplates map[string]string
 
@@ -46,8 +47,14 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 
 func rootHandlerAdd(w http.ResponseWriter, r *http.Request) {
     if !fGameOver {
-        c := r.FormValue("cell") 
-        err := helpers.Add(c, &cell, &varGame)
+        c := r.FormValue("cell")
+				u := r.FormValue("user")
+				if curUserId != u {
+        	err := helpers.Add(c, &cell, &varGame)
+					curUserId = u
+				} else {
+					err := false
+				}
         winGame, fGameOver, timestamp = helpers.CheckWin(&cell)
         fmt.Println(winGame, fGameOver, timestamp)
         if !err {
@@ -71,6 +78,7 @@ func initGame(){
     varGame = -1
     winGame = 0
     fGameOver = false
+		curUserId = "noname"
 }
 
 func main() {
